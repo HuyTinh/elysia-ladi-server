@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/config/firebase
+/src/config/firebase/ladi-server-firebase-adminsdk-jsdm4-8b154faac4.json
 
 # testing
 /coverage
