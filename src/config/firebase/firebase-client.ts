@@ -26,7 +26,7 @@ export class FirebaseClient<T> {
         }
     }
 
-    async findById(id: string): Promise<T | null> {
+    async findById(id: string): Promise<T | null | void> {
         try {
             const snapshot = db.ref(`${this.path}/${id}`).once('value');
             if ((await snapshot).exists()) {
