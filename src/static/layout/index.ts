@@ -1,6 +1,6 @@
 import * as elements from "typed-html"
 
-export const BaseHTML = ({ children }: elements.Children) => {
+export const BaseHTML = ({ children }: JSX.HtmlTag) => {
     return (
         `
             <!DOCTYPE html>
