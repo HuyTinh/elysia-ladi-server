@@ -1,6 +1,6 @@
 export interface IProduct {
     name: string
-    note: string
-    price: number
+    lore: string
+    description: string
     thumbnail: string
 }
