@@ -1,19 +1,31 @@
 import { Elysia } from "elysia";
 import { html } from '@elysiajs/html'
-import { BaseHTML } from "./static/layout";
-
 import * as elements from "typed-html"
+import { ManageProductPage } from "./static/pages/manage-product";
+import { BaseHTML } from "./static/layout";
+import { DashboardPage } from "./static/pages/dasboard";
+import { ProductService } from "./services/product.service";
+import { IProduct } from "./types/product.type";
 
 const app = new Elysia().
   use(html())
-  .get("/", ({ html }) => html(
-    <BaseHTML>
-      <body>
-        <button hx-post="/clicked"
-          hx-swap="outerHTML">Click me!</button>
-      </body>
-    </BaseHTML>))
-  .post("/clicked", () => <div>I'm from the server!</div>)
-  .listen(3000);
+  .onAfterHandle(({ response, html }) => {
+    return html(
+      <BaseHTML>
+        <body>
+          {response}
+        </body>
+      </BaseHTML>
+    )
+  })
+  .get("/", () => <DashboardPage />)
+  .get("/manage-product", async () => {
 
-console.log(`Server starting on http://${app.server?.hostname}:${app.server?.port}`)
+    const products = await ProductService.findAll()
+    return <ManageProductPage products={products.data as IProduct[]} />
+  })
+  .listen(3000, ({ hostname, port }) =>
+    console.log(`Server starting on http://${hostname}:${port}`)
+  );
+
+
