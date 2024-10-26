@@ -44,7 +44,9 @@ export const ManageProductTable = ({ products }: { products?: IProduct[] }) => {
                                 </div>
                             </td>
                             <th>
-                                <label class="btn btn-info btn-sm rounded-lg" for="my_modal_7"
+                                <label
+                                    hx-get={`/manage-product/${val.slug}`}
+                                    class="btn btn-info btn-sm rounded-lg" for="my_modal_7"
                                     aria-label="edit">
                                     <i class="fa-solid fa-pen-to-square text-white"></i>
                                 </label>
@@ -63,7 +65,6 @@ export const ManageProductTable = ({ products }: { products?: IProduct[] }) => {
                 </div>
                 <label class="modal-backdrop" for="my_modal_7">Close</label>
             </div>
-
         </div>
     )
 }
