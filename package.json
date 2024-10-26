@@ -7,8 +7,11 @@
   },
   "dependencies": {
     "@elysiajs/html": "^1.1.1",
+    "@types/cheerio": "^0.22.35",
+    "cheerio": "^1.0.0",
     "elysia": "latest",
-    "firebase-admin": "^12.6.0"
+    "elysia-compression": "^0.0.7",
+    "firebase-admin": "^12.7.0"
   },
   "devDependencies": {
     "bun-types": "latest",

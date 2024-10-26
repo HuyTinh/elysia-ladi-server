@@ -5,7 +5,7 @@ import { IProduct } from '../../../types/product.type'
 
 export const ManageProductPage = ({ products }: { products: IProduct[] }) => {
     return (
-        <div>
+        <div class="p-4 h-screen">
             <ManageProductTable products={products} />
         </div>
     )
