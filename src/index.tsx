@@ -11,6 +11,7 @@ import * as cheerio from "cheerio"
 import { App } from "./static/app";
 import { compression } from 'elysia-compression'
 import { log } from "console";
+import { request } from "http";
 
 const app = new Elysia()
 
@@ -22,28 +23,35 @@ const $ = cheerio.load(htmlContent);
 app
   .use(html())
   .use(compression())
-  .onAfterHandle(({ response, html }) => {
-    return html(response)
+  .onBeforeHandle(({ request }) => {
+    switch (request.method) {
+      case "GET":
+        $('#root').html(<App /> as any);
+        return;
+    }
+  })
+  .onAfterHandle(({ request, response, html }) => {
+    switch (request.method) {
+      case "GET":
+        $('#content').html(response);
+        return html($.html())
+      default:
+        return html(response)
+    }
   })
   .get("/", async () => {
-    $('#root').html(<App /> as any);
-    return $.html()
+    return <DashboardPage />
   })
   .post("/", async () => {
-
     return <DashboardPage />
   })
   .get("/manage-product", async () => {
     const products = await ProductService.findAll()
-
-    $('#root').html(<App /> as any);
-
-    $('#content').html(<ManageProductPage products={products.data as IProduct[]} /> as any)
-    return $.html()
+    return <ManageProductPage products={products.data as IProduct[]} />;
   })
   .post("/manage-product", async () => {
     const products = await ProductService.findAll()
-    return <ManageProductPage products={products.data as IProduct[]} /> as any
+    return <ManageProductPage products={products.data as IProduct[]} />;
   })
   .get("/manage-product/:slug", async (ctx) => {
     const products = await ProductService.findAll()
