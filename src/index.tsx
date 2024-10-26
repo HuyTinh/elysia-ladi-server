@@ -10,10 +10,9 @@ import { join, dirname } from 'path';
 import * as cheerio from "cheerio"
 import { App } from "./static/app";
 import { compression } from 'elysia-compression'
-import { log } from "console";
-import { request } from "http";
+import 'dotenv/config'
 
-const app = new Elysia()
+export const app = new Elysia()
 
 const htmlContent = await readFile
   (join(dirname(__dirname), 'index.html'), 'utf8')
@@ -39,28 +38,19 @@ app
         return html(response)
     }
   })
-  .get("/", async () => {
+  .all("/", async () => {
     return <DashboardPage />
   })
-  .post("/", async () => {
-    return <DashboardPage />
-  })
-  .get("/manage-product", async () => {
-    const products = await ProductService.findAll()
-    return <ManageProductPage products={products.data as IProduct[]} />;
-  })
-  .post("/manage-product", async () => {
+  .all("/manage-product", async () => {
     const products = await ProductService.findAll()
     return <ManageProductPage products={products.data as IProduct[]} />;
   })
   .get("/manage-product/:slug", async (ctx) => {
-    const products = await ProductService.findAll()
     console.log(ctx.params);
+    const products = await ProductService.findAll()
     return <ManageProductPage products={products.data as IProduct[]} />
   })
-
   .listen(3000, ({ hostname, port }) =>
     console.log(`Server starting on http://${hostname}:${port}`)
   );
-
 
