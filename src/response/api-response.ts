@@ -1,12 +1,13 @@
+import { IAPIResponse } from "../types/api-response.type"
 import { IProduct } from "../types/product.type"
 
-export interface APIResponse<T> {
-    code?: number,
-    message?: string,
-    data?: T | null
-}
+/**
+ * 
+ * @param param0 
+ * @returns 
+ */
+export const APIResponse = ({ code, message, data }: IAPIResponse<IProduct | IProduct[] | null>): IAPIResponse<IProduct | IProduct[]> => {
 
-export const APIResponse = ({ code, message, data }: APIResponse<IProduct | IProduct[] | null>): APIResponse<IProduct | IProduct[]> => {
     return {
         code: code || 1000,
         message,
