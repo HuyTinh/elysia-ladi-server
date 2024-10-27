@@ -44,6 +44,24 @@ export class FirebaseClient<T> {
         }
     }
 
+    async findBySlug(slug: string): Promise<T | null | void> {
+        try {
+            const snapshot = db.ref(`${this.path}`).orderByChild("slug").equalTo(slug).once("value");
+            if ((await snapshot).exists()) {
+                let fbResponse = (await snapshot).val()
+
+                return Object.keys(fbResponse).map((key: string) => {
+                    return { id: key, ...fbResponse[key] }
+                })[0]
+            } else {
+                return {} as T;
+            }
+        } catch (error) {
+            console.error(`Error retrieving ${typeof ({} as T)}: `, error);
+            return {} as T;
+        }
+    }
+
     async create(data: T): Promise<void> {
         try {
             const newRef = db.ref(this.path).push()
