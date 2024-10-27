@@ -1,5 +1,8 @@
 import { db } from "./firebase-config";
 
+/**
+ * 
+ */
 export class FirebaseClient<T> {
 
     private path: string;
@@ -8,6 +11,10 @@ export class FirebaseClient<T> {
         this.path = path
     }
 
+    /**
+     * 
+     * @returns 
+     */
     async findAll(): Promise<T[] | null> {
         try {
             const snapshot = db.ref(this.path).once('value');
@@ -26,6 +33,12 @@ export class FirebaseClient<T> {
         }
     }
 
+
+    /**
+     * 
+     * @param id 
+     * @returns 
+     */
     async findById(id: string): Promise<T | null | void> {
         try {
             const snapshot = db.ref(`${this.path}/${id}`).once('value');
@@ -44,6 +57,11 @@ export class FirebaseClient<T> {
         }
     }
 
+    /**
+     * 
+     * @param slug 
+     * @returns 
+     */
     async findBySlug(slug: string): Promise<T | null | void> {
         try {
             const snapshot = db.ref(`${this.path}`).orderByChild("slug").equalTo(slug).once("value");
@@ -62,6 +80,10 @@ export class FirebaseClient<T> {
         }
     }
 
+    /**
+     * 
+     * @param data 
+     */
     async create(data: T): Promise<void> {
         try {
             const newRef = db.ref(this.path).push()
@@ -74,6 +96,11 @@ export class FirebaseClient<T> {
         }
     }
 
+    /**
+     * 
+     * @param id 
+     * @param data 
+     */
     async update(id: string, data: Partial<T>): Promise<void> {
         try {
             await db.ref(`${this.path}/${id}`).update(data);
@@ -84,6 +111,10 @@ export class FirebaseClient<T> {
         }
     }
 
+    /**
+     * 
+     * @param id 
+     */
     async delete(id: string): Promise<void> {
         try {
             await db.ref(`${this.path}/${id}`).remove();
