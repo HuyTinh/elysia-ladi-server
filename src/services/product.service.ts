@@ -9,6 +9,14 @@ export const ProductService = {
         const data: IProduct[] = await productClient.findAll() as IProduct[]
         return APIResponse({ data }) as APIResponse<IProduct[]>
     },
+    findById: async (id: string): Promise<APIResponse<IProduct>> => {
+        const data: IProduct = await productClient.findById(id) as IProduct
+        return APIResponse({ data }) as APIResponse<IProduct>
+    },
+    findBySlug: async (slug: string): Promise<APIResponse<IProduct>> => {
+        const data: IProduct = await productClient.findBySlug(slug) as IProduct
+        return APIResponse({ data }) as APIResponse<IProduct>
+    },
     createProduct: async (data: IProduct): Promise<APIResponse<void>> => {
         let message = "Create product successful!"
         await productClient.create(data).catch(() => {

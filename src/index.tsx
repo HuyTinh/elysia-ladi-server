@@ -11,6 +11,7 @@ import * as cheerio from "cheerio"
 import { App } from "./static/app";
 import { compression } from 'elysia-compression'
 import 'dotenv/config'
+import { EditProductForm } from "./static/pages/manage-product/form/edit";
 
 export const app = new Elysia()
 
@@ -29,11 +30,16 @@ app
         return;
     }
   })
-  .onAfterHandle(({ request, response, html }) => {
+  .onAfterHandle(({ params, request, response, html }) => {
+
     switch (request.method) {
       case "GET":
-        $('#content').html(response);
-        return html($.html())
+        if (!params) {
+          $('#content').html(response);
+          return html($.html())
+        } else {
+          return html(response)
+        }
       default:
         return html(response)
     }
@@ -46,9 +52,8 @@ app
     return <ManageProductPage products={products.data as IProduct[]} />;
   })
   .get("/manage-product/:slug", async (ctx) => {
-    console.log(ctx.params);
-    const products = await ProductService.findAll()
-    return <ManageProductPage products={products.data as IProduct[]} />
+    const product = await ProductService.findBySlug(ctx.params.slug)
+    return <EditProductForm product={product.data as IProduct} />
   })
   .listen(3000, ({ hostname, port }) =>
     console.log(`Server starting on http://${hostname}:${port}`)
