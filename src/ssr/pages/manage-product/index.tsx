@@ -10,8 +10,19 @@ import { ManageProductTable } from './table'
 export const ManageProductPage = ({ products }: { products: IProduct[] }): JSX.Element => {
     return (
         <div class="p-4 h-screen">
-            <ManageProductTable products={products} />
-        </div>
+            <div>
+                <div class="flex justify-end">
+                    <label
+                        hx-get={`/manage-product/create`}
+                        hx-target="#create_form"
+                        class="btn btn-info rounded-lg" for="create_product_modal"
+                        aria-label="create">
+                        <i class="fa-solid fa-plus text-white"></i>
+                    </label>
+                </div>
+                <ManageProductTable products={products} />
+            </div>
+        </div >
     )
 }
 

@@ -55,13 +55,13 @@ export const ProductService = {
      * @param {string} id
      * @param {IProduct} data
      */
-    updateProduct: async (id: string, data: IProduct) => {
-
-        await productClient.update(id, data).then(() => {
-            return APIResponse({ message: "Update product successful!" })
-        }).catch(() => {
-            return APIResponse({ message: "Update product fail!" })
+    updateProduct: async (id: string, data: IProduct): Promise<IAPIResponse<IProduct>> => {
+        await productClient.update(id, data).catch(() => {
+            return APIResponse({ message: "Update product fail!" }) as IAPIResponse<IProduct>;
         })
+
+        const dataResponse: IProduct = await productClient.findById(id) as IProduct
+        return APIResponse({ data }) as IAPIResponse<IProduct>
     },
 
     /**

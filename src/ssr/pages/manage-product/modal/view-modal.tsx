@@ -9,7 +9,7 @@ export const ViewModal = (): JSX.Element => {
         <div>
             <input type="checkbox" id="view_product_modal" class="modal-toggle" />
             <div class="modal duration-500 delay-[250ms]" role="dialog">
-                <div class="modal-box" id="view_form">
+                <div class="modal-box max-w-5xl" id="view_form">
                 </div>
                 <label class="modal-backdrop" for="view_product_modal">Close</label>
             </div>

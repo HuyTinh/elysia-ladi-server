@@ -16,50 +16,65 @@ export const EditProductForm = ({ product }: { product: IProduct }): JSX.Element
                     Edit Product
                 </span>
             </div>
-            <div class="space-y-2">
-                <div>
+            <form hx-put={`/manage-product/${product.slug}/edit`}>
+                <input
+                    type="text"
+                    placeholder="Type here"
+                    class="hidden"
+                    name='id'
+                    value={product.id}
+                />
+                <div class="space-y-2">
                     <div>
-                        Name:
+                        <div>
+                            Name:
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered rounded input-sm w-full"
+                            name='name'
+                            value={product.name}
+                        />
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Type here"
-                        class="input input-bordered rounded input-sm w-full"
-                        value={product.name}
-                    />
-                </div>
-                <div>
                     <div>
-                        Slug:
+                        <div>
+                            Slug:
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered rounded input-sm w-full"
+                            name='slug'
+                            value={product.slug}
+                        />
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Type here"
-                        class="input input-bordered rounded input-sm w-full"
-                        value={product.slug}
-                    />
-                </div>
-                <div>
                     <div>
-                        Lore:
-                    </div>
-                    <textarea class="textarea-bordered w-full p-2" placeholder="Bio"
-                    >
-                        {product.lore}
-                    </textarea>
+                        <div>
+                            Lore:
+                        </div>
+                        <textarea class="textarea-bordered w-full p-2" placeholder="Bio"
+                            name='lore'
+                        >
+                            {product.lore}
+                        </textarea>
 
-                </div>
-                <div>
-                    <div>
-                        Description:
                     </div>
-                    <textarea class="textarea-bordered w-full p-2" rows='5' placeholder="Bio"
-                    >
-                        {product.description}
-                    </textarea>
+                    <div>
+                        <div>
+                            Description:
+                        </div>
+                        <textarea class="textarea-bordered w-full p-2" rows='5' placeholder="Bio" name='description'
+                        >
+                            {product.description}
+                        </textarea>
 
+                    </div>
                 </div>
-            </div>
+                <button
+
+                    class="btn">Submit</button>
+            </form>
         </div>
     )
 }
