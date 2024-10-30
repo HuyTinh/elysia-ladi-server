@@ -1,7 +1,7 @@
-import { FirebaseClient } from "../config/firebase/firebase-client";
-import { APIResponse } from "../response/api-response";
-import { IAPIResponse } from "../types/api-response.type";
-import { IProduct } from "../types/product.type";
+import { FirebaseClient } from "../../../config/firebase/firebase-client";
+import { APIResponse } from "../../../response/api-response";
+import { IAPIResponse } from "../../../types/api-response.type";
+import { IProduct } from "../../../types/product.type";
 
 const productClient = new FirebaseClient<IProduct>('products')
 
