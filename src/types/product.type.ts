@@ -1,3 +1,9 @@
+/**
+ *
+ *
+ * @export
+ * @interface IProduct
+ */
 export interface IProduct {
     name: string
     lore: string

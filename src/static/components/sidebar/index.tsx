@@ -1,7 +1,12 @@
 import * as elements from "typed-html"
 import { SideMenuItem } from "./controller"
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+export const SideBar = (): JSX.Element => {
 
-export const SideBar = ({ content }: { content?: any }) => {
     return (
         <div>
             <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -36,7 +41,6 @@ export const SideBar = ({ content }: { content?: any }) => {
 
             <div class="sm:ml-64 h-full">
                 <div class="h-full relative">
-                    {/* {content} */}
                     <div id="content"></div>
                     <div id="loader" class="h-full htmx-indicator">
                         <div class="left-0 absolute top-0 bg-black/55 w-full flex justify-center h-full">

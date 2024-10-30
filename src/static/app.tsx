@@ -1,16 +1,14 @@
 import * as elements from 'typed-html'
 import { SideBar } from './components/sidebar'
-
 /**
- * 
- * @param param0 
- * @returns 
+ *
+ *
+ * @return {*}  {JSX.Element}
  */
-
-export const App = ({ content }: { content?: any }) => {
+export const App = (): JSX.Element => {
     return (
         <div>
-            <SideBar content={content} />
+            <SideBar />
         </div>
     )
 }

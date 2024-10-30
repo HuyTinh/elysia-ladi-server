@@ -1,7 +1,6 @@
 import { FirebaseClient } from "../config/firebase/firebase-client";
 import { APIResponse } from "../response/api-response";
 import { IAPIResponse } from "../types/api-response.type";
-;
 import { IProduct } from "../types/product.type";
 
 const productClient = new FirebaseClient<IProduct>('products')
@@ -51,11 +50,13 @@ export const ProductService = {
     },
 
     /**
-     * 
-     * @param id 
-     * @param data 
+     *
+     *
+     * @param {string} id
+     * @param {IProduct} data
      */
     updateProduct: async (id: string, data: IProduct) => {
+
         await productClient.update(id, data).then(() => {
             return APIResponse({ message: "Update product successful!" })
         }).catch(() => {
@@ -63,8 +64,13 @@ export const ProductService = {
         })
     },
 
-
+    /**
+     *
+     *
+     * @param {string} id
+     */
     deleteProduct: async (id: string) => {
+
         await productClient.delete(id).then(() => {
             return APIResponse({ message: "Update product successful!" })
         }).catch(() => {
