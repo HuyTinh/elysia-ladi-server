@@ -1,9 +1,16 @@
 import * as elements from "typed-html"
 import { IProduct } from "../../../../types/product.type";
-import * as _ from "hyperscript"
+import { EditModal } from "../modal/edit-modal";
+import { ViewModal } from "../modal/view-modal";
+import { CreateModal } from "../modal/create-modal";
 
-export const ManageProductTable = ({ products }: { products?: IProduct[] }) => {
-
+/**
+ *
+ *
+ * @param {{ products?: IProduct[] }} { products }
+ * @return {*}  {JSX.Element}
+ */
+export const ManageProductTable = ({ products }: { products?: IProduct[] }): JSX.Element => {
     return (
         <div class="overflow-x-auto border-2 border-gray-600 rounded-lg">
             <table class="table">
@@ -47,7 +54,15 @@ export const ManageProductTable = ({ products }: { products?: IProduct[] }) => {
                             </td>
                             <th>
                                 <label
-                                    hx-get={`/manage-product/${val.slug}`}
+                                    hx-get={`/manage-product/${val.slug}/view`}
+                                    hx-target="#view_form"
+                                    class="btn btn-info btn-sm rounded-lg" for="view_product_modal"
+                                    aria-label="view">
+                                    <i class="fa-solid fa-eye text-white"></i>
+                                </label>
+
+                                <label
+                                    hx-get={`/manage-product/${val.slug}/edit`}
                                     hx-target="#edit_form"
                                     class="btn btn-info btn-sm rounded-lg" for="edit_product_modal"
                                     aria-label="edit">
@@ -58,14 +73,11 @@ export const ManageProductTable = ({ products }: { products?: IProduct[] }) => {
                     )}
                 </tbody>
             </table>
-            {/* <label >open modal</label> */}
 
-            <input type="checkbox" id="edit_product_modal" class="modal-toggle" />
-            <div class="modal duration-500 delay-[250ms]" role="dialog">
-                <div class="modal-box" id="edit_form">
-                </div>
-                <label class="modal-backdrop" for="edit_product_modal">Close</label>
-            </div>
+
+            <ViewModal />
+            <CreateModal />
+            <EditModal />
         </div>
     )
 }

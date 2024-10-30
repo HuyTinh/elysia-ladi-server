@@ -1,13 +1,15 @@
 import * as elements from 'typed-html'
-import { IProduct } from '../../../../../types/product.type'
-
-
-export const EditProductForm = ({ product }: { product: IProduct }) => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+export const CreateProductForm = (): JSX.Element => {
     return (
         <div hx-trigger="revealed" hx-swap="innerHTML">
             <div class="divider">
                 <span class="font-bold text-xl">
-                    Edit Product
+                    Create Product
                 </span>
             </div>
             <div class="space-y-2">
@@ -19,7 +21,6 @@ export const EditProductForm = ({ product }: { product: IProduct }) => {
                         type="text"
                         placeholder="Type here"
                         class="input input-bordered rounded input-sm w-full"
-                        value={product.name}
                     />
                 </div>
                 <div>
@@ -30,7 +31,6 @@ export const EditProductForm = ({ product }: { product: IProduct }) => {
                         type="text"
                         placeholder="Type here"
                         class="input input-bordered rounded input-sm w-full"
-                        value={product.slug}
                     />
                 </div>
                 <div>
@@ -39,7 +39,6 @@ export const EditProductForm = ({ product }: { product: IProduct }) => {
                     </div>
                     <textarea class="textarea-bordered w-full p-2" placeholder="Bio"
                     >
-                        {product.lore}
                     </textarea>
 
                 </div>
@@ -49,9 +48,7 @@ export const EditProductForm = ({ product }: { product: IProduct }) => {
                     </div>
                     <textarea class="textarea-bordered w-full p-2" rows='5' placeholder="Bio"
                     >
-                        {product.description}
                     </textarea>
-
                 </div>
             </div>
         </div>

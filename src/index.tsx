@@ -11,7 +11,8 @@ import * as cheerio from "cheerio"
 import { App } from "./static/app";
 import { compression } from 'elysia-compression'
 import 'dotenv/config'
-import { EditProductForm } from "./static/pages/manage-product/form/edit";
+import { EditProductForm } from "./static/pages/manage-product/form/edit-form";
+
 
 export const app = new Elysia()
 

@@ -7,8 +7,14 @@ export class FirebaseClient<T> {
 
     private path: string;
 
+    /**
+     * Creates an instance of FirebaseClient.
+     * @param {string} path
+     * @memberof FirebaseClient
+     */
     constructor(path: string) {
         this.path = path
+
     }
 
     /**
@@ -32,7 +38,6 @@ export class FirebaseClient<T> {
             return [];
         }
     }
-
 
     /**
      * 

@@ -1,6 +1,12 @@
 import * as elements from "typed-html"
 
-export const DashboardPage = () => {
+/**
+ *
+ *
+ * @return {*}  {JSX.Element}
+ */
+export const DashboardPage = (): JSX.Element => {
+
     return (
         <div>Dash board</div>
     )
