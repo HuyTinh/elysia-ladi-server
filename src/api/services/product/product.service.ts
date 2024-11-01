@@ -1,3 +1,4 @@
+import { cache } from "../../../config/cache/cache-setup";
 import { FirebaseClient } from "../../../config/firebase/firebase-client";
 import { APIResponse } from "../../../response/api-response";
 import { IAPIResponse } from "../../../types/api-response.type";
@@ -12,7 +13,12 @@ export const ProductService = {
      * @returns 
      */
     findAll: async (): Promise<IAPIResponse<IProduct[]>> => {
-        const data: IProduct[] = await productClient.findAll() as IProduct[]
+        let data: IProduct[] = cache.get("products") as IProduct[]
+
+        if (!data) {
+            data = await productClient.findAll() as IProduct[]
+        }
+
         return APIResponse({ data }) as IAPIResponse<IProduct[]>
     },
 
@@ -32,7 +38,13 @@ export const ProductService = {
      * @returns 
      */
     findBySlug: async (slug: string): Promise<IAPIResponse<IProduct>> => {
-        const data: IProduct = await productClient.findBySlug(slug) as IProduct
+        let data: IProduct = (cache.get("products") as IProduct[])
+            ?.find(val => val.slug === slug) as IProduct
+
+        if (!data) {
+            data = await productClient.findBySlug(slug) as IProduct
+        }
+
         return APIResponse({ data }) as IAPIResponse<IProduct>
     },
 

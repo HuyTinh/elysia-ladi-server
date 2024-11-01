@@ -15,7 +15,8 @@
     "elysia-compression": "^0.0.7",
     "firebase-admin": "^12.7.0",
     "hyperscript": "^2.0.2",
-    "logixlysia": "^4.0.0"
+    "logixlysia": "^4.0.0",
+    "lru-cache": "^11.0.2"
   },
   "devDependencies": {
     "bun-types": "latest",
