@@ -7,3 +7,8 @@ export default new Elysia({
     .get("/products", async () => {
         return await ProductService.findAll()
     })
+    .get("/products/:slug/slug", async (ctx) => {
+        const { slug } = ctx.params
+
+        return await ProductService.findBySlug(slug)
+    })

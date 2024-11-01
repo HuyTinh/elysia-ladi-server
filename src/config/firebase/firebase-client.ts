@@ -1,3 +1,4 @@
+import { cache } from "../cache/cache-setup";
 import { db } from "./firebase-config";
 
 /**
@@ -14,7 +15,6 @@ export class FirebaseClient<T> {
      */
     constructor(path: string) {
         this.path = path
-
     }
 
     /**
@@ -25,11 +25,15 @@ export class FirebaseClient<T> {
         try {
             const snapshot = db.ref(this.path).once('value');
             if ((await snapshot).exists()) {
-                let fbResponse = (await snapshot).val()
+                const fbResponse = (await snapshot).val()
 
-                return Object.keys(fbResponse).map((key: string) => {
+                const productReponses = Object.keys(fbResponse).map((key: string) => {
                     return { id: key, ...fbResponse[key] }
                 })
+
+                cache.set(this.path, productReponses)
+
+                return productReponses;
             } else {
                 return [];
             }
@@ -73,9 +77,12 @@ export class FirebaseClient<T> {
             if ((await snapshot).exists()) {
                 let fbResponse = (await snapshot).val()
 
+                await this.findAll()
+
                 return Object.keys(fbResponse).map((key: string) => {
                     return { id: key, ...fbResponse[key] }
                 })[0]
+
             } else {
                 return {} as T;
             }
