@@ -14,7 +14,6 @@ import { IProduct } from "../types/product.type";
 import { EditProductForm } from "./pages/manage-product/form/edit-form";
 import { ViewProductForm } from "./pages/manage-product/form/view-form";
 import { CreateProductForm } from "./pages/manage-product/form/create-form";
-import { log } from "console";
 
 const htmlContent = await readFile
     (join(dirname(dirname(__dirname)), 'index.html'), 'utf8')
@@ -66,5 +65,9 @@ export default new Elysia()
         return <EditProductForm product={APIResponse.data as IProduct} />
     })
     .get("/manage-product/create", () => {
+        return <CreateProductForm />
+    })
+    .post("/manage-product/create", async (ctx) => {
+        console.log(ctx);
         return <CreateProductForm />
     })
