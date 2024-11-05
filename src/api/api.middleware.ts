@@ -13,11 +13,6 @@ export const loggerMiddleware = (): Elysia => {
             logFilePath: './logs/example.log',
             customLogFormat:
                 '🦊 {now} {level} {duration} {method} {pathname} {status} {message} {ip} {epoch}',
-            // logFilter: {
-            //   level: ['ERROR', 'WARNING'],
-            //   status: [500, 404],
-            //   method: 'GET'
-            // }
         }
     })
 }
