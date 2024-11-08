@@ -1,29 +1,25 @@
-<div align="left">
-    <div>
-	<img src="https://cdn-icons-png.flaticon.com/512/1499/1499993.png" width="30%" align="left" style="margin-right: 15px"/>
-	</div>
-    <div style="display: inline-block;">
-        <h2 style="display: inline-block; vertical-align: middle; margin-top: 0;">ELYSIA-LADI-SERVER</h2>
-        <p>
+<p align="center">
+    <img src="https://cdn-icons-png.flaticon.com/512/1499/1499993.png" align="center" width="30%">
+</p>
+<p align="center"><h1 align="center">ELYSIA-LADI-SERVER</h1></p>
+<p align="center">
 	<em><code>❯ REPLACE-ME</code></em>
 </p>
-        <p>
+<p align="center">
 	<!-- local repository, no metadata badges. --></p>
-        <p>Built with the tools and technologies:</p>
-        <p>
-	<img src="https://img.shields.io/badge/npm-CB3837.svg?style=flat-square&logo=npm&logoColor=white" alt="npm">
-	<img src="https://img.shields.io/badge/Bower-EF5734.svg?style=flat-square&logo=Bower&logoColor=white" alt="Bower">
-	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat-square&logo=HTML5&logoColor=white" alt="HTML5">
-	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat-square&logo=JavaScript&logoColor=black" alt="JavaScript">
-	<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat-square&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
-	<img src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style=flat-square&logo=Yarn&logoColor=white" alt="Yarn">
-	<img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat-square&logo=TypeScript&logoColor=white" alt="TypeScript">
+<p align="center">Built with the tools and technologies:</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/npm-CB3837.svg?style=default&logo=npm&logoColor=white" alt="npm">
+	<img src="https://img.shields.io/badge/Bower-EF5734.svg?style=default&logo=Bower&logoColor=white" alt="Bower">
+	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=default&logo=HTML5&logoColor=white" alt="HTML5">
+	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=default&logo=JavaScript&logoColor=black" alt="JavaScript">
+	<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=default&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
+	<img src="https://img.shields.io/badge/Yarn-2C8EBB.svg?style=default&logo=Yarn&logoColor=white" alt="Yarn">
+	<img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style=default&logo=TypeScript&logoColor=white" alt="TypeScript">
 </p>
-    </div>
-</div>
-<br clear="left"/>
+<br>
 
-<details><summary>Table of Contents</summary>
+## 🔗 Table of Contents
 
 - [📍 Overview](#-overview)
 - [👾 Features](#-features)
@@ -39,8 +35,7 @@
 - [🎗 License](#-license)
 - [🙌 Acknowledgments](#-acknowledgments)
 
-</details>
-<hr>
+---
 
 ## 📍 Overview
 
