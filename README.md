@@ -1,5 +1,7 @@
 <div align="left">
-    <img src="https://cdn-icons-png.flaticon.com/512/1499/1499993.png" width="30%" align="left" style="margin-right: 15px"/>
+    <div>
+	<img src="https://cdn-icons-png.flaticon.com/512/1499/1499993.png" width="30%" align="left" style="margin-right: 15px"/>
+	</div>
     <div style="display: inline-block;">
         <h2 style="display: inline-block; vertical-align: middle; margin-top: 0;">ELYSIA-LADI-SERVER</h2>
         <p>
